@@ -1,5 +1,5 @@
 <?php
-require '../functions.php';
+require '../functions/functions.php';
 // jika tombol tambah ditekan
 
 if (isset($_POST['tambah'])) {
@@ -8,7 +8,7 @@ if (isset($_POST['tambah'])) {
         echo "<script>
         
                     alert('data berhasil ditambah');
-                    document.location.href = '../index.php';
+                    document.location.href = 'admin.php';
 
                 </script>";
     }
@@ -45,6 +45,11 @@ if (isset($_POST['tambah'])) {
             <div class="mb-3">
                 <label for="password" class="form-label">password</label>
                 <input type="text" class="form-control" id="password" name="password" required>
+
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">email</label>
+                <input type="text" class="form-control" id="email" name="email" required>
 
             </div>
             <div class="mb-3">

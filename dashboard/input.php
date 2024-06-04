@@ -1,17 +1,17 @@
 <?php
-require '../functions.php';
+require '../functions/functions.php';
 
 if (isset($_POST['submit'])) {
 
     if (input($_POST) > 0) {
         echo "<script>
                     alert('Data anda berhasil di INPUT');
-                    document.href.location = 'index.php';
+                    document.href.location = 'admin.php';
                   </script>";
     } else {
         echo "<script>
                     alert('Data anda gagal di INPUT');
-                    document.href.location = 'index.php';
+                    document.href.location = 'admin.php';
                   </script>";
     }
 }

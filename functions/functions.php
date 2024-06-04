@@ -21,15 +21,15 @@ function query($querry)
     return $rows;
 }
 
-function input($input)
+function tambah($tambah)
 // ini adalah code untuk menambahkan user ke database
 {
     global $connect;
 
-    $username = $input["username"];
-    $password = $input["password"];
-    $email = $input["email"];
-    $gambar = $input["gambar"];
+    $username = $tambah["username"];
+    $password = $tambah["password"];
+    $email = $tambah["email"];
+    $gambar = $tambah["gambar"];
 
     $querry = "
                                 INSERT INTO users (username, password, email, gambar)
@@ -124,7 +124,7 @@ function uploadgambar()
     $namaFileBaru .= $ekstensiGambar;
 
     //kalo gambar Lolos pengecekan, gambar siap diupload
-    move_uploaded_file($tmpName, "img/" . $namaFileBaru);
+    move_uploaded_file($tmpName, "../img/" . $namaFileBaru);
 
     return $namaFileBaru;
 }
