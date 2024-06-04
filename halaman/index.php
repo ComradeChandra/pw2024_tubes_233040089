@@ -1,5 +1,5 @@
 <?php
-require '../functions.php';
+require 'functions.php';
 
 $users = query("SELECT * FROM users");
 ?>
@@ -13,7 +13,7 @@ $users = query("SELECT * FROM users");
 </head>
 
 <body>
-    <a href="input.php">TAMBAHKAN USER</a>
+    <a href="../input.php">TAMBAHKAN USER</a>
     <table border="1" cellpadding="14" cellspacing="0">
         <tr>
             <th>ID</th>
@@ -30,10 +30,10 @@ $users = query("SELECT * FROM users");
                 <td><?= htmlspecialchars($row["username"]); ?></td>
                 <td><?= htmlspecialchars($row["email"]); ?></td>
                 <td><?= htmlspecialchars($row["password"]); ?></td>
-                <td><img src="img/<?= $row['gambar'] ?>" alt="" width="75"></td>
+                <td><img src="../img/<?= $row['gambar'] ?>" alt="" width="75"></td>
                 <td>
-                    <a href="UbahDataUser.php?id=<?= $row['id'] ?>">UBAH</a>
-                    <a href="hapusUser.php?id=<?= $row["id"] ?>">HAPUS</a>
+                    <a href="../UbahDataUser.php?id=<?= $row['id'] ?>">UBAH</a>
+                    <a href="../hapusUser.php?id=<?= $row["id"] ?>">HAPUS</a>
                 </td>
             </tr>
             <?php $i++; ?>

@@ -1,7 +1,7 @@
 <?php
-require 'functions.php';
+require '../functions.php';
 
-if (isset($_POST)) {
+if (isset($_POST['submit'])) {
 
     if (input($_POST) > 0) {
         echo "<script>
