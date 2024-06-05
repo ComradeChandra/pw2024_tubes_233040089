@@ -1,5 +1,5 @@
 <?php
-require '../functions.php';
+require '../../functions/functions.php';
 
 
 $id = $_GET['id'];
