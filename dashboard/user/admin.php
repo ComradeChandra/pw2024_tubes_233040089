@@ -1,7 +1,13 @@
 <?php
+session_start();
 require '../../functions/functions.php';
+// $_SESSION["role"] = "admin"; <--untuk nanti kalau udh bikin laman login
 
-$users = query("SELECT * FROM users");
+
+$peran = "superadmin"; //<-- pake ini aja dulu
+
+//query ini sngambil semua data di tabel user yang rolenya bukan samadengan superadmin
+$users = query("SELECT * FROM users WHERE role != 'superadmin'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +34,7 @@ $users = query("SELECT * FROM users");
         <?php $i = 1; ?>
         <?php foreach ($users as $row): ?>
 
-            <!-- cek apakah si user admin bukan? -->
+            <!-- ini tuh buat ngecek apakah si user admin bukan? -->
             <?php
 
             $user_id = $row["id"];
@@ -44,23 +50,37 @@ $users = query("SELECT * FROM users");
                 <td><img src="../img/<?= $row['gambar'] ?>" alt="" width="75"></td>
                 <td>
                     <?php
+                    //ini tuh buat ngecek kalau pengguna /akun ini  apakah rolenya samadengan admin?
                     if ($role === "admin"):
                         ?>
-                        <a href="setuser.php?id=<?= $row['id'] ?>"
-                            onclick="return confirm('Kamu Yakin min mau jadiin admin ini jadi user?'); "><button>SET
-                                USER</button></a>
+                        <!-- jika yang menggunakan ini adalah superadmin maka munculkan kode di bawah -->
+                        <?php if ($peran === 'superadmin'): ?>
+                            <a href="setuser.php?id=<?= $row['id'] ?>"
+                                onclick="return confirm('Kamu Yakin min mau jadiin admin ini jadi user?'); "><button>SET
+                                    USER</button></a>
+                        <?php endif; ?>
                         <?php
+                        //jika bukan si akun bukan seorang admin maka munculkan kode di bawah
                     else:
                         ?>
-                        <a href="setadminuser.php?id=<?= $row['id'] ?>"
-                            onclick="return confirm('Kamu Yakin min mau jadiin user ini admin?'); "><button>SET
-                                ADMIN</button></a>
+                        <?php
+                        //tapi jji pengguna adalah seorang superadmin maka munculkan kode di bawah 
+                        if ($peran === "superadmin"):
+                            ?>
+                            <a href="setadminuser.php?id=<?= $row['id'] ?>"
+                                onclick="return confirm('Kamu Yakin supermin mau jadiin user ini admin?'); "><button>SET
+                                    ADMIN</button></a>
+                            <?php
+                        endif;
+                        ?>
                         <?php
                     endif;
                     ?>
-
-                    <a href="hapusUser.php?id=<?= $row["id"] ?>"
-                        onclick="return confirm('Kamu Yakin min mau hapus user ini?'); "><button>DELETE USER</button></a>
+                    <!-- Cek apakah akun ini adalah user atau pengguna adalah seorang superadmin munculkan kode di bawah -->
+                    <?php if ($role === 'user' or $peran === 'superadmin'): ?>
+                        <a href="hapusUser.php?id=<?= $row["id"] ?>"
+                            onclick="return confirm('Kamu Yakin min mau hapus user ini?'); "><button>DELETE USER</button></a>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php $i++; ?>
