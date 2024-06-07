@@ -184,7 +184,7 @@ function ubahgame($data)
                 deskripsi= '$deskripsi', 
                 kategori_id=  '$kategori_id',  
                 harga = '$harga',
-                gambar_game= '$gambar' 
+                gambar_game= '$gambar',
                 video_game= '$video_game'
 WHERE  id = $id
                             ";

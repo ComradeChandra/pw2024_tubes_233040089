@@ -3,7 +3,7 @@ require '../../functions/functions.php';
 
 $id = $_GET['id'];
 $game = query("SELECT * FROM games WHERE id =$id")[0];
-$kategori_id = $game["id"];
+$kategori_id = $game["kategori_id"];
 $kategori = query("SELECT * FROM kategori WHERE id!=$kategori_id");
 $kategori_lama = query("SELECT nama_kategori FROM kategori WHERE id=$kategori_id")[0]["nama_kategori"];
 if (isset($_POST['ubahgame'])) {
@@ -33,6 +33,16 @@ if (isset($_POST['ubahgame'])) {
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../../CSS/main.css">
     <style>
+        .container {
+            background-color: #000000ab;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        body {
+            color: white;
+        }
+
         table th,
         table td {
             background-color: #ffffffe2 !important;
@@ -45,7 +55,7 @@ if (isset($_POST['ubahgame'])) {
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
 
-    <div div class="container col-8">
+    <div div class="container col-8 mt-5">
 
         <h1>Ubah Data Game</h1>
         <form action=" " method="POST" enctype="multipart/form-data">
@@ -80,7 +90,7 @@ if (isset($_POST['ubahgame'])) {
 
             </div>
             <div class="mb-3">
-                <input type="hidden" nama="gambar_lama" value="<?= $game["gambar_game"] ?>">
+                <input type="hidden" name="gambar_lama" value="<?= $game["gambar_game"] ?>">
                 <label for="gambar" class="form-label">Gambar Game</label>
                 <input type="file" class="form-control" id="gambar" name="gambar" value="<?= $game['gambar_game'] ?> ">
 

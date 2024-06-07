@@ -66,8 +66,8 @@ $game = query("SELECT * FROM games WHERE id = $id")[0];
         <div class="col-5">
             <div class="container text-center">
                 <div class="col-12 mt-4 m-auto">
-                    <iframe width="400" height="220" src="https://www.youtube.com/embed/l-eMi1xJ2dM?si=AseMCAmTMvezjEda"
-                        title="YouTube video player" frameborder="0"
+                    <iframe width="400" height="220" src="<?= $game["video_game"]; ?>" title="YouTube video player"
+                        frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>

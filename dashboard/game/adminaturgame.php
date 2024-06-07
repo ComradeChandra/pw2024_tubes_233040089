@@ -1,7 +1,7 @@
 <?php
 require '../../functions/functions.php';
 
-$users = query("SELECT * FROM games");
+$users = query("SELECT * , games.id AS id , kategori.id AS kategori_id FROM games JOIN kategori ON kategori_id = kategori.id");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +41,7 @@ $users = query("SELECT * FROM games");
                     <td><?= htmlspecialchars($i) ?></td>
                     <td><?= htmlspecialchars($row["namagame"]); ?></td>
                     <td><?= htmlspecialchars($row["deskripsi"]); ?></td>
-                    <td><?= htmlspecialchars($row["kategori_id"]); ?></td>
+                    <td><?= htmlspecialchars($row["nama_kategori"]); ?></td>
                     <td><?= htmlspecialchars($row["harga"]); ?></td>
                     <td><?= htmlspecialchars($row["date"]); ?></td>
                     <td><img src="../../img/gambargame/<?= $row["gambar_game"] ?>" alt="" width="100"></td>
