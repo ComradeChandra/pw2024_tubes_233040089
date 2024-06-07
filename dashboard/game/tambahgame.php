@@ -34,6 +34,13 @@ if (isset($_POST['tambahgame'])) {
     <title> Tambah Game</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../CSS/main.css">
+    <style>
+        table th,
+        table td {
+            background-color: #ffffffe2 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -48,6 +55,10 @@ if (isset($_POST['tambahgame'])) {
                 <label for="namagame" class="form-label">Nama Game</label>
                 <input type="text" class="form-control" id="namagame" name="namagame" required>
 
+            </div>
+            <div class="mb-3">
+                <label for="namagame" class="form-label">Deskripsi Game</label>
+                <textarea class="form-control" id="deskripsi" name="deskripsi" required></textarea>
             </div>
             <div class="mb-3">
                 <label for="kategori_id" class="form-label">Kategori Game</label>
@@ -72,8 +83,18 @@ if (isset($_POST['tambahgame'])) {
             <div class="mb-3">
                 <label for="gambar" class="form-label">Gambar</label>
                 <input type="file" class="form-control-file" id="gambar" name="gambar" required>
+            </div>
 
-                <button type="submit" name="tambahgame" class="btn btn-primary">Tambah Data</button>
+            <div class="mb-3">
+                <label for="video_game" class="form-label">Link Video/Trailer</label>
+                <input type="text" class="form-control" id="video_game" name="video_game" required>
+            </div>
+
+
+
+
+            <button type="submit" name="tambahgame" class="btn btn-primary">Tambah Data</button>
+
         </form>
 
     </div>

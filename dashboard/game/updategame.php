@@ -31,6 +31,13 @@ if (isset($_POST['ubahgame'])) {
     <title> Ubah Data Game</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../CSS/main.css">
+    <style>
+        table th,
+        table td {
+            background-color: #ffffffe2 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,7 +47,7 @@ if (isset($_POST['ubahgame'])) {
 
     <div div class="container col-8">
 
-        <h1>Ubah Data </h1>
+        <h1>Ubah Data Game</h1>
         <form action=" " method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $game['id'] ?> ">
             <div class="mb-3">
@@ -48,6 +55,11 @@ if (isset($_POST['ubahgame'])) {
                 <input type="text" class="form-control" id="namagame" name="namagame" value="<?= $game['namagame'] ?>"
                     required>
 
+            </div>
+            <div class="mb-3">
+                <label for="deskripsi" class="form-label">Deskripsi Game</label>
+                <textarea class="form-control" id="deskripsi" name="deskripsi"
+                    required><?= $game['deskripsi'] ?></textarea>
             </div>
             <div class="mb-3">
                 <select name="kategori_id" id="kategori">
@@ -73,6 +85,12 @@ if (isset($_POST['ubahgame'])) {
                 <input type="file" class="form-control" id="gambar" name="gambar" value="<?= $game['gambar_game'] ?> ">
 
             </div>
+            <div class="mb-3">
+                <label for="video_game" class="form-label">Link Video/Trailer</label>
+                <input type="text" class="form-control" id="video_game" name="video_game"
+                    value="<?= $game['video_game'] ?> " required>
+            </div>
+
             <button type="submit" name="ubahgame" class="btn btn-primary">Ubah Data</button>
         </form>
     </div>

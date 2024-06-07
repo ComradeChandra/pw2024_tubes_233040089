@@ -142,14 +142,16 @@ function tambahgame($tambahgame)
     global $connect;
 
     $namagame = $tambahgame["namagame"];
+    $deskripsi = $tambahgame["deskripsi"];
     $kategori_id = $tambahgame["kategori_id"];
     $harga = $tambahgame["harga"];
 
     $gambar_game = uploadgambar("../../img/gambargame/");
+    $video_game = $tambahgame["video_game"];
 
     $querry = "
-                                INSERT INTO games (namagame, kategori_id, harga, gambar_game)
-                                VALUES ('$namagame', '$kategori_id' ,'$harga', '$gambar_game');
+                                INSERT INTO games (namagame, deskripsi, kategori_id, harga, gambar_game,video_game)
+                                VALUES ('$namagame','$deskripsi', '$kategori_id' ,'$harga', '$gambar_game','$video_game');
                             ";
 
     mysqli_query($connect, $querry);
@@ -164,9 +166,11 @@ function ubahgame($data)
 
     $id = $data["id"];
     $namagame = $data['namagame'];
+    $deskripsi = $data['deskripsi'];
     $kategori_id = $data['kategori_id'];
     $harga = $data['harga'];
     $gambar_lama = $data["gambar_lama"];
+    $video_game = $data["video_game"];
 
 
     if ($_FILES['gambar']['error'] === 4) {
@@ -177,9 +181,11 @@ function ubahgame($data)
 
     $querry = "UPDATE games SET
                 namagame= '$namagame', 
+                deskripsi= '$deskripsi', 
                 kategori_id=  '$kategori_id',  
                 harga = '$harga',
                 gambar_game= '$gambar' 
+                video_game= '$video_game'
 WHERE  id = $id
                             ";
 
@@ -196,7 +202,7 @@ function hapuskategori($id)
     return mysqli_affected_rows($connect);
 
 }
-// ini adalah code untuk menambahkan kategpri game ke database
+// ini adalah code untuk menambahkan kategori game ke database
 function tambahkategori($tambahkategori)
 {
     global $connect;

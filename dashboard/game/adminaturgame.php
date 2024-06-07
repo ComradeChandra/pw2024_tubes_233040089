@@ -12,6 +12,13 @@ $users = query("SELECT * FROM games");
     <title>Game list</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../CSS/main.css">
+    <style>
+        table th,
+        table td {
+            background-color: #ffffffe2 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,6 +28,7 @@ $users = query("SELECT * FROM games");
             <tr>
                 <th>ID</th>
                 <th>NAMA GAME</th>
+                <th>DESKRIPSI</th>
                 <th>KATEGORI</th>
                 <th>HARGA</th>
                 <th>DATE</th>
@@ -32,6 +40,7 @@ $users = query("SELECT * FROM games");
                 <tr>
                     <td><?= htmlspecialchars($i) ?></td>
                     <td><?= htmlspecialchars($row["namagame"]); ?></td>
+                    <td><?= htmlspecialchars($row["deskripsi"]); ?></td>
                     <td><?= htmlspecialchars($row["kategori_id"]); ?></td>
                     <td><?= htmlspecialchars($row["harga"]); ?></td>
                     <td><?= htmlspecialchars($row["date"]); ?></td>
