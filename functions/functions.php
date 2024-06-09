@@ -237,3 +237,49 @@ function ubahkategori($data)
     return mysqli_affected_rows($connect);
 
 }
+
+//fungsi untuk registrasi user
+function registrasi($data)
+{
+    global $connect;
+
+    $username = strtolower(stripslashes($data["username"]));
+    $email = strtolower(stripslashes($data["email"]));
+    $password = mysqli_real_escape_string($connect, $data["password"]);
+    $password2 = mysqli_real_escape_string($connect, $data["password2"]);
+
+    // Cek konfirmasi password
+    if ($password !== $password2) {
+        echo "<script>
+                alert('konfirmasi password tidak sesuai')
+                </script>";
+        return false;
+    }
+
+    // Cek username sudah terdaftar atau belum
+    $result = mysqli_query($connect, "SELECT username FROM users WHERE username = '$username'");
+    if (mysqli_fetch_assoc($result)) {
+        echo "<script>
+                alert('username sudah terdaftar!')
+                </script>";
+        return false;
+    }
+
+    $result2 = mysqli_query($connect, "SELECT username FROM users WHERE email = '$email'");
+    if (mysqli_fetch_assoc($result)) {
+        echo "<script>
+                alert('email sudah terdaftar!')
+                </script>";
+        return false;
+    }
+
+    // Enkripsi password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Tambahkan userbaru ke database
+    mysqli_query($connect, "INSERT INTO users(username, password, email) VALUES ('$username', '$password', '$email')");
+
+    return mysqli_affected_rows($connect);
+
+}
+

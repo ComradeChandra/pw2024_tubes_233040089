@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "../functions/functions.php";
 $games = query("SELECT * FROM games");
 
@@ -12,29 +13,16 @@ $games = query("SELECT * FROM games");
     <title>HALAMAN UTAMA USER</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        .carousel-inner img {
-            width: 100%;
-            height: 25rem;
-        }
-
-        .card img {
-            height: 250px;
-        }
-
-        .card-body {
-            height: 200px;
-            overflow-y: scroll;
-            ;
-        }
-    </style>
+    <link rel="stylesheet" href="../CSS/navbar.css">
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../CSS/index.css">
 </head>
 
 <body>
 
     <?php require "../layouts/navbar.php" ?>
 
-    <div class="container text-center">
+    <div class="container text-center text-box1">
         <h1>TOKO GAME NOSTALGIA</h1>
     </div>
     <div class="container">
@@ -73,7 +61,7 @@ $games = query("SELECT * FROM games");
                     </button>
                 </div>
             </div>
-            <div class="container text-center">
+            <div class="container text-center text-box2">
                 <h1>LIST GAME</h1>
             </div>
             <div class="row justify-content-center mt-4 gap-2" id="container">
@@ -86,7 +74,7 @@ $games = query("SELECT * FROM games");
                             <h5 class="card-title"><?= $game["namagame"] ?></h5>
                             <p class="card-text"><?= $game["deskripsi"] ?></p>
                         </div>
-                        <a href="detail.php?id=<?= $game["id"]; ?>" class="btn btn-primary mb-2">Go somewhere</a>
+                        <a href="detail.php?id=<?= $game["id"]; ?>" class="btn btn-primary mb-2">DETAIL GAME</a>
                     </div>
                     <?php
                 endforeach;

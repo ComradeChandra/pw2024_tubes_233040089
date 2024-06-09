@@ -1,0 +1,36 @@
+.card img {
+    height: 250px;
+}
+
+.card-body {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.col-5 {
+    height: 80vh;
+    background-color: #eaeaea;
+    position: relative;
+}
+
+.col-7 {
+    height: 80vh;
+    background-color: #eaeaea;
+}
+
+.col-12 {
+    width: 400px;
+    height: 220px;
+    background-color: black;
+
+}
+
+.col-5 a {
+    width: 100px;
+    background-color: green;
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}

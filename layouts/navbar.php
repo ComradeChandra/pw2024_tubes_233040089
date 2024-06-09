@@ -1,4 +1,12 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<?php
+
+if (isset($_SESSION["login"])) {
+    $role = $_SESSION["role"];
+}
+
+?>
+
+<nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
         <a class="navbar-brand" href="../halaman/index.php">
         </a>
@@ -12,7 +20,7 @@
                     <a class="nav-link active" aria-current="page" href="../halaman/index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">admin</a>
+                    <a class="nav-link" href="#">link</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -20,21 +28,35 @@
                         Dropdown
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <?php
+                        if (isset($_SESSION["login"])):
+
+                            ?>
+                            <li><a class="dropdown-item" href="../halaman/logout.php">Logout</a></li>
+                            <?php
+                        else:
+                            ?>
+                            <li><a class="dropdown-item" href="../halaman/login.php">Login</a></li>
+                            <?php
+                        endif;
+                        ?>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <?php
+                        if (isset($_SESSION["login"])):
+
+                            ?>
+                            <li><a class="dropdown-item" href="#"><?= $role; ?></a></li>
+                            <?php
+                        endif;
+                        ?>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="keyword">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-outline-dark" type="submit">Cari Game...</button>
             </form>
         </div>
     </div>
