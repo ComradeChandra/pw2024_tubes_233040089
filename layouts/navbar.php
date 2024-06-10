@@ -40,6 +40,12 @@ if (isset($_SESSION["login"])) {
                             <?php
                         endif;
                         ?>
+                        <div class="container">
+
+                            <?php if ($role == "admin" || $role == "superadmin"): ?>
+                                <li><a href="../dashboard/dashboard.php">Dashboard</a></li>
+                            <?php endif; ?>
+                        </div>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
